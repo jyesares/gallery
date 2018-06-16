@@ -1,1 +1,6 @@
-{}
+{
+  "flicker-rest": {
+    "name": "flicker-rest",
+    "connector": "rest"
+  }
+}
