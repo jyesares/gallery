@@ -1,6 +1,32 @@
 {
   "flicker-rest": {
     "name": "flicker-rest",
-    "connector": "rest"
+    "connector": "rest",
+    "baseUrl": "https://api.flickr.com/services/rest/",
+    "options": {
+      "headers": {
+        "accepts": "application/json",
+        "content-type": "application/json"
+      }
+    },
+    "operations": [
+      {
+        "template": {
+          "method": "GET",
+          "url": "?method=flickr.photos.getRecent",
+          "query": {
+            "api_key": "${API_KEY_ENV}",
+            "format": "json",
+            "nojsoncallback": 1,
+            "extras": "{extras}",
+            "per_page": "{per_page}",
+            "page": "{page}"
+          }
+        },
+        "functions": {
+          "getrecents": ["extras", "per_page", "page"]
+        }
+      }
+    ]
   }
 }
