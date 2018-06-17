@@ -8,6 +8,7 @@
   "scripts": {
     "lint": "eslint .",
     "dev": "NODE_ENV=development nodemon .",
+    "prestart": "npm run build --prefix client",
     "start": "NODE_ENV=production node .",
     "test": "mocha tests/**/*.js",
     "posttest": "npm run lint && nsp check"
