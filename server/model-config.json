@@ -15,6 +15,14 @@
   },
   "photo": {
     "dataSource": "flicker-rest",
-    "public": true
+    "public": true,
+    "options": {
+      "remoting": {
+        "sharedMethods": {
+          "*": false,
+          "getrecents": true
+        }
+      }
+    }
   }
 }
