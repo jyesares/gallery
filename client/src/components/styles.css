@@ -56,8 +56,8 @@
   height: 0;
 }
 
-.image > img {
-  transform: scale(2);
+.image img {
+  width: 100%;
 }
 
 .detail {
@@ -67,7 +67,10 @@
 .detailImage {
   transition: 0.2s ease-in;
   z-index: 1;
-  transform: scale(2) translate(30%, 24%);
+}
+
+.detailImage img {
+  width: 100%;
 }
 
 .description {
@@ -76,7 +79,7 @@
   border-left: solid 1px burlywood;
   border-right: solid 1px burlywood;
   border-radius: 4px 4px 0 0;
-  font-size: 6px;
+  font-size: 14px;
   padding: 10px;
   display: flex;
   flex-direction: column;
