@@ -4,22 +4,7 @@ import moment from 'moment';
 
 import {loadMore, fetchPhotos, detailPhoto} from '../store/actions';
 import './Photos.css';
-
-const Image = ({photo, index, onClick, enableLink = false}) => {
-  const {farm, server, id, secret} = photo;
-  const url = `https://farm${farm}.staticflickr.com/${server}/${id}_${secret}.jpg`;
-  return (
-    <div>
-      {enableLink ? (
-        <a href={enableLink === true ? url : ''}>
-          <img key={index || 0} src={url} onClick={onClick} />
-        </a>
-      ) : (
-        <img key={index || 0} src={url} onClick={onClick} />
-      )}
-    </div>
-  );
-};
+import Image from './Image';
 
 const ImageDescription = ({photo}) => (
   <div className="description">
