@@ -4,6 +4,7 @@ import {
   FETCH_PHOTOS_FAILURE,
   FETCH_PHOTOS_SUCCESS,
   DETAIL_PHOTO,
+  LOAD_FIRST_IMAGE,
 } from '../constants';
 import {getRecentPhotos} from '../services';
 
@@ -46,4 +47,22 @@ export const detailPhoto = (data, offset) => ({
   type: DETAIL_PHOTO,
   data,
   offset,
+});
+
+export const loadInit = () => async (dispatch, getState) => {
+  dispatch(fetchPhotosRequest());
+  let response;
+  try {
+    response = await getRecentPhotos(getState().page);
+  } catch (err) {
+    dispatch(fetchPhotosFailure(err));
+  }
+  const json = await response.json();
+  dispatch(fetchPhotosSuccess(json));
+  dispatch(loadFirstImage(json.photos.photo[0]));
+};
+
+export const loadFirstImage = photo => ({
+  type: LOAD_FIRST_IMAGE,
+  photo,
 });

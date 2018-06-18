@@ -4,6 +4,7 @@ import {
   FETCH_PHOTOS_FAILURE,
   FETCH_PHOTOS_SUCCESS,
   DETAIL_PHOTO,
+  LOAD_FIRST_IMAGE,
 } from '../constants';
 
 const initialState = {
@@ -26,7 +27,6 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         isFetching: false,
         photos: [...state.photos, ...action.data.photos.photo],
-        photo: {...action.data.photos.photo[0]},
       };
     case FETCH_PHOTOS_FAILURE:
       return {...state, isFetching: false, error: action.error};
@@ -36,6 +36,8 @@ const rootReducer = (state = initialState, action) => {
         photo: action.data,
         offset: action.offset,
       };
+    case LOAD_FIRST_IMAGE:
+      return {...state, photo: {...action.photo}};
     default:
       return state;
   }

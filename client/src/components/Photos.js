@@ -2,33 +2,14 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import moment from 'moment';
 
-import {loadMore, fetchPhotos, detailPhoto} from '../store/actions';
-import './Photos.css';
+import {loadMore, fetchPhotos, detailPhoto, loadInit} from '../store/actions';
+import './styles.css';
 import Image from './Image';
-
-const ImageDescription = ({photo}) => (
-  <div className="description">
-    <span>
-      <b>Title</b>: {photo.title}
-    </span>
-    <span>
-      <b>ID</b>: {photo.id}
-    </span>
-    <span>
-      <b>OwnerId</b>: {photo.owner}
-    </span>
-    <span>
-      <b>OwnerName</b>: {photo.ownername}
-    </span>
-    <span>
-      <b>Date upload</b>: {moment.unix(photo.dateupload).format('MM/DD/YYYY')}
-    </span>
-  </div>
-);
+import ImageDescription from './ImageDescription';
 
 class Photos extends Component {
   componentDidMount() {
-    this.props.fetchPhotos();
+    this.props.loadInit();
     document.addEventListener('scroll', this.handleEventScroll.bind(this));
   }
 
@@ -97,6 +78,7 @@ const mapDispatchToProps = dispatch => ({
   loadMore: () => dispatch(loadMore()),
   fetchPhotos: () => dispatch(fetchPhotos()),
   detailPhoto: (photo, offset) => dispatch(detailPhoto(photo, offset)),
+  loadInit: () => dispatch(loadInit()),
 });
 
 export default connect(
