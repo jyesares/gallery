@@ -20,7 +20,7 @@ class Photos extends Component {
   handleEventScroll(event) {
     if (event.type === 'scroll') {
       const d = document.documentElement;
-      if (d.scrollTop + window.innerHeight >= d.offsetHeight) {
+      if (d.scrollTop + d.clientHeight >= d.offsetHeight) {
         document.removeEventListener('scroll', this.handleEventScroll);
         this.props.loadMore();
       }
@@ -38,9 +38,10 @@ class Photos extends Component {
                 <Image
                   photo={photo}
                   index={i}
-                  onClick={e =>
-                    this.props.detailPhoto(photo, e.target.offsetTop)
-                  }
+                  onClick={e => {
+                    this.props.detailPhoto(photo, e.target.offsetTop);
+                    window.scrollTo(0, e.target.offsetTop - 20);
+                  }}
                 />
               </div>
             </div>
