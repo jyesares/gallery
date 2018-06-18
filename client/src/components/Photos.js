@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import moment from 'moment';
 
-import {loadMore, fetchPhotos, detailPhoto, loadInit} from '../store/actions';
+import {loadMore, detailPhoto, loadInit} from '../store/actions';
 import './styles.css';
 import Image from './Image';
 import ImageDescription from './ImageDescription';
@@ -76,7 +76,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   loadMore: () => dispatch(loadMore()),
-  fetchPhotos: () => dispatch(fetchPhotos()),
   detailPhoto: (photo, offset) => dispatch(detailPhoto(photo, offset)),
   loadInit: () => dispatch(loadInit()),
 });
