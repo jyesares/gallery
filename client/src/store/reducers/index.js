@@ -26,6 +26,7 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         isFetching: false,
         photos: [...state.photos, ...action.data.photos.photo],
+        photo: {...action.data.photos.photo[0]},
       };
     case FETCH_PHOTOS_FAILURE:
       return {...state, isFetching: false, error: action.error};
