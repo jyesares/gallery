@@ -1,4 +1,5 @@
 .container {
+  background-color: honeydew;
   display: flex;
 }
 
@@ -21,16 +22,66 @@
   margin: 20px;
 }
 
-.frame {
+.image {
   width: 500px;
   height: 100px;
   overflow: hidden;
-  box-shadow: 1px lightgray;
   cursor: pointer;
+  transition: 0.2s ease-in;
+}
+
+.image a {
+  height: 0;
+}
+
+.image:hover {
+  opacity: 0.3;
+  width: 101%;
+}
+
+.hoverName {
+  height: 0;
+  visibility: hidden;
+}
+
+.box:hover > .hoverName {
+  visibility: visible;
+  position: relative;
+  top: 25px;
+  color: black;
+  font-family: cursive;
+  font-weight: 600;
+  font-size: 32px;
+  z-index: 1000;
+  height: 0;
+}
+
+.image > img {
+  transform: scale(2);
 }
 
 .detail {
   padding: 30px;
+}
+
+.detailImage {
+  transition: 0.2s ease-in;
+  z-index: 1;
+  transform: scale(2) translate(30%, 24%);
+}
+
+.description {
+  background-color: cornsilk;
+  border-top: solid 1px burlywood;
+  border-left: solid 1px burlywood;
+  border-right: solid 1px burlywood;
+  border-radius: 4px 4px 0 0;
+  font-size: 6px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  color: burlywood;
 }
 
 /** EFFECTS **/
