@@ -7,7 +7,7 @@ export default ({photo, index, onClick, enableLink = false}) => {
   return (
     <div>
       {enableLink ? (
-        <a href={enableLink === true ? urlFlickr : ''}>
+        <a href={enableLink === true ? urlFlickr : ''} target="_blank">
           <img key={index || 0} src={url} onClick={onClick} />
         </a>
       ) : (
