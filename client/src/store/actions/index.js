@@ -5,6 +5,7 @@ import {
   FETCH_PHOTOS_SUCCESS,
   DETAIL_PHOTO,
   LOAD_FIRST_IMAGE,
+  CLOSE_IMAGE,
 } from '../constants';
 import {getRecentPhotos} from '../services';
 
@@ -65,4 +66,8 @@ export const loadInit = () => async (dispatch, getState) => {
 export const loadFirstImage = photo => ({
   type: LOAD_FIRST_IMAGE,
   photo,
+});
+
+export const closeImage = () => ({
+  type: CLOSE_IMAGE,
 });

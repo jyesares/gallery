@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import moment from 'moment';
 
-import {loadMore, detailPhoto, loadInit} from '../store/actions';
+import {loadMore, detailPhoto, loadInit, closeImage} from '../store/actions';
 import './styles.css';
 import Image from './Image';
 import ImageDescription from './ImageDescription';
@@ -48,20 +48,24 @@ class Photos extends Component {
           ))}
           {this.props.isFetching && <div className="fetching">Loading...</div>}
         </div>
-        {this.props.photo ? (
-          <div className="detail">
-            <div
-              className="detailImage effect2"
-              style={{
-                position: 'absolute',
-                top: `${this.props.offset}px`,
-              }}
-            >
-              <ImageDescription photo={this.props.photo} />
-              <Image photo={this.props.photo} enableLink={true} />
+        {this.props.photo &&
+          this.props.imageIsOpen && (
+            <div className="detail">
+              <div
+                className="detailImage effect2"
+                style={{
+                  position: 'absolute',
+                  top: `${this.props.offset}px`,
+                }}
+              >
+                <ImageDescription
+                  photo={this.props.photo}
+                  closeButton={this.props.closeImage}
+                />
+                <Image photo={this.props.photo} enableLink={true} />
+              </div>
             </div>
-          </div>
-        ) : null}
+          )}
       </div>
     );
   }
@@ -73,12 +77,14 @@ const mapStateToProps = state => ({
   isFetching: state.isFetching,
   photo: state.photo,
   offset: state.offset,
+  imageIsOpen: state.imageIsOpen,
 });
 
 const mapDispatchToProps = dispatch => ({
   loadMore: () => dispatch(loadMore()),
   detailPhoto: (photo, offset) => dispatch(detailPhoto(photo, offset)),
   loadInit: () => dispatch(loadInit()),
+  closeImage: () => dispatch(closeImage()),
 });
 
 export default connect(

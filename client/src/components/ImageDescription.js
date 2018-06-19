@@ -3,11 +3,14 @@ import moment from 'moment';
 
 import './styles.css';
 
-export default ({photo}) => {
+export default ({photo, closeButton}) => {
   const {title, id, owner, ownername, dateupload} = photo;
 
   return (
     <div className="description">
+      <span className="close" onClick={() => closeButton()}>
+        X
+      </span>
       <span>
         <b>Title</b>:{' '}
         {title.length >= 60 ? `${title.substring(0, 59)}...` : title}

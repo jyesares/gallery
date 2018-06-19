@@ -5,6 +5,7 @@ import {
   FETCH_PHOTOS_SUCCESS,
   DETAIL_PHOTO,
   LOAD_FIRST_IMAGE,
+  CLOSE_IMAGE,
 } from '../constants';
 
 const initialState = {
@@ -14,6 +15,7 @@ const initialState = {
   error: null,
   photo: null,
   offset: null,
+  imageIsOpen: true,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -35,9 +37,12 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         photo: action.data,
         offset: action.offset,
+        imageIsOpen: true,
       };
     case LOAD_FIRST_IMAGE:
       return {...state, photo: {...action.photo}};
+    case CLOSE_IMAGE:
+      return {...state, imageIsOpen: false};
     default:
       return state;
   }
